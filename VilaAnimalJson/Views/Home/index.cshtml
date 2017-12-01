@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+	<div class="jumbotron">
+		<h1>Lista dos pacientes</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<p>Paciente</p>
+		</div>
+		<div class="col-md-2">
+			<p>Partidas Jogadas</p>
+		</div>
+		<div class="col-md-3">
+			<p>Data de inicio</p>
+		</div>
+		<div class="col-md-2">
+			<p>Media de pontos</p>
+		</div>
+		<div class="col-md-2">
+			<p>Dias consecutivos</p>
+		</div>
+	</div>
+    <hr />
+    <a href="~/Views/Usuario/Novo.cshtml">Gerar Json</a>
+    <script>
+        $(function () {
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "GeradorController/getJson",
+                data: { quantidade: 10 },
+                success: function (dados) {
+                    $(dados).each(function (i) {
+                        document.writeln("<p>Nome: " + dados[i].Nome + "</p>");
+                    });
+                }
+            })
+        })
+    </script>
+</body>
+</html>
